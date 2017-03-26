@@ -13,14 +13,14 @@ endif
 
 .SUFFIXES: .c .so .xo .o
 
-all: uuid.so
+all: nutzam_uuid.so
 
 .c.xo:
 	$(CC) -I. $(CFLAGS) $(SHOBJ_CFLAGS) -fPIC -c $< -o $@
 
-uuid.xo: ../redismodule.h
+nutzam_uuid.xo: ../redismodule.h nutzam_uuid.h
 
-uuid.so: uuid.xo
+nutzam_uuid.so: nutzam_uuid.xo
 	$(LD) -o $@ $< $(SHOBJ_LDFLAGS) $(LIBS) -lc -luuid
 
 
